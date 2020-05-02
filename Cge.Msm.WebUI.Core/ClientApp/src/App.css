@@ -1,0 +1,13 @@
+﻿
+
+/*.app-background {
+    background-color: #d6e7fa;
+}*/
+.app-navbar {
+    background-color: #003366;
+    color: white;
+}
+.app-link-black {
+    text-decoration: none; 
+    color: black;
+}
