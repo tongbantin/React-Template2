@@ -12,7 +12,6 @@ import {teal} from '@material-ui/core/colors/'
 import { useSelector, useDispatch } from 'react-redux'
 import Axios from 'axios'
 import * as common from '../CommonFunction/common-function'
-import { API_AUTHEN } from '../../store/constants';
 const useStyles = makeStyles((theme) => ({
     background: {
         backgroundColor:teal[300]
@@ -145,32 +144,14 @@ function Login() {
     }
     const login = () => {
         IncorrectPass(false)
-        Axios.post(API_AUTHEN, {
-            UserId: dataItem.Username,
-            Password: dataItem.Password,
-            Aud: common.GetAud()
-        })
-            .then((response) => {
-                if (!response) {
-                    IncorrectPass(true)
-                } else if (response.data) {
-                    common.SetUserData(response.data);
-                    redirectPage()
-                }
-            }).catch((error) => {
-                common.InformationOKDialog('Login Fail')
-            });
-
-
-
-
+        
     }
     const handleFocus = (event) => event.target.select();
     const handleInputChange = event => {
         const { name, value } = event.target
         setDataItem({ ...dataItem, [name]: value })
         if (event.key === 'Enter') {
-            login();
+            
         }
 
     }
