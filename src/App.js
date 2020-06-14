@@ -3,6 +3,7 @@ import RouteLayout1 from './components/template/RouteLayout1';
 import {Home} from './components/Home/Home'
 import {MyStep} from './components/Master/MutiForm'
 import {Form} from './components/Master/Form'
+import {Test} from './components/Master/test'
 import User from './components/Master/User'
 import Login from './components/Login/Login';
 import ErrorBoundary from './components/template/ErrorBoundary'
@@ -15,6 +16,7 @@ export default () => (
             <RouteLayout1 path='/form' component={MyStep} />
             <RouteLayout1 path='/table' component={User} />
             <RouteLayout1 path='/form2' component={Form} />
+            <RouteLayout1 path='/Test' component={Test} />
         </Router>
     </ErrorBoundary>
 );

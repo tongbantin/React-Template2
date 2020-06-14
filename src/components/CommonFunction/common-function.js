@@ -43,7 +43,7 @@ export const apiError = (err) => {
         icon: 'error',
         title: 'Api Error'
     })
-    
+    console.error(err)
 }
 
 export const setIsEditfromMode = (mode) => {
@@ -373,14 +373,6 @@ export function merge(...schemas) {
   }
 ///////////// Authentication and Authorization /////////////////////////
 // add Authorization as default header
-Axios.interceptors.request.use(async (config) => {
-
-    const jwtToken = GetToken();
-    if (jwtToken != null) {
-        config.headers.Authorization = 'Bearer ' + jwtToken;
-    }
-    return config;
-});
 
 Axios.interceptors.response.use((response) => {
     return response;

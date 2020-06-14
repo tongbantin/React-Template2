@@ -1,7 +1,10 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { Card, CardBody, CardHeader, CardTitle } from 'reactstrap';
+import { useForm, FormContext, useFormContext } from "react-hook-form";
 import * as common from './../CommonFunction/common-function'
 const CriteriaBox = (props) => {
+    const criteriaForm =useForm()
+
     const Iconclose = common.getIconTag(common.Icontype.ION, "IoMdClose")
     const [show, setShow] = useState(false);
     const [style, setStyle] = useState();
@@ -24,15 +27,17 @@ const CriteriaBox = (props) => {
         else
             setStyle({display:'none'})
     }, [show])
-
     useEffect(() => {
         setShow(props.hidden)
-        
     }, [props])
-
+    const Search =()=>{
+        let param = criteriaForm.getValues()
+        currentProps.onSearch(param)
+    }
 
     return (
-        <React.Fragment >    
+        <React.Fragment >
+            <FormContext {...criteriaForm}>  
             <Card style={style} className="card-br criteria-Box-Card">
 
                 <button className="icon-float-right"
@@ -47,12 +52,13 @@ const CriteriaBox = (props) => {
                             {props.children}
                         </div>
                         <div className="col-xs-10 col-md-4" style={{ textAlign: 'right', lineHeight:'33px' }}>
-                            <button className="btn btn-default btnDefault btn-Temp" name="Search" value="Search" onClick={currentProps.onSearch} >Search</button>
+                            <button className="btn btn-default btnDefault btn-Temp" name="Search" value="Search" onClick={Search} >Search</button>
                             <button className="btn btn-default btnDefault btn-Temp" name="Clear" value="Clear" hidden={currentProps.hiddenClear} onClick={currentProps.onClear} >Clear</button>  
                         </div>
                     </div>
                 </CardBody>
             </Card>         
+            </FormContext>  
         </React.Fragment>
         )
 }

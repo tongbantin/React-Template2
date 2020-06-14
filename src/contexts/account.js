@@ -15,3 +15,17 @@ export const AccountContextProvider = ({ children }) => {
     }
     return <AccountContext.Provider value={accountStore}>{children}</AccountContext.Provider>
 }
+export const useAccountContext = () => {
+
+    const [account, setAccount] = useState({ email: "a", password: undefined, confirmPassword: undefined })
+
+    const accountStore = {
+        //State
+        account: [account, setAccount],
+        //Function
+        LoadAccountList:()=>{
+            setAccount({...account,password:"A"})
+        }
+    }
+    return accountStore
+}

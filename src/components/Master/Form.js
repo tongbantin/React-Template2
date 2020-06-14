@@ -50,7 +50,7 @@ export function Form() {
   );
 }
 export function PaymentFormDetail() {
-  const Account = useContext(AccountContext);
+
   const { register, errors, setValue } = useFormContext();
   const [dataItems, setdataItems] = useState({Movie:'The Godfather',Year:'1993'})
   useEffect(() => {
@@ -59,9 +59,7 @@ export function PaymentFormDetail() {
       { Year:'1993', },
     ])
   },[])
-  useEffect(() => {
-    setValue(common.setDataToFormHook(Account.account[0]));
-  }, [Account.account[0]]);
+
   const setValueUncontrol=(name,value)=>{
     console.log(name,value)
     setValue(name, value)
